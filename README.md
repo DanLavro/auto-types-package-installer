@@ -2,6 +2,8 @@
 
 Auto Types Packages Installer is a command-line tool that simplifies the installation of npm packages and their corresponding type definitions.
 
+https://github.com/DanLavro/auto-types-package-installer/assets/88592292/0cebc30d-85bf-4d00-bb50-611f1dba8355
+
 ## Installation
 
 To use Auto Types Packages Installer, make sure you have [Node.js](https://nodejs.org) installed on your system. Then, follow these steps:
