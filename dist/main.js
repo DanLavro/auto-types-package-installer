@@ -21,13 +21,10 @@ const MESSAGE_INSTALLING = "Installing ";
 const MESSAGE_SEARCHING_TYPES = "Searching for @types/";
 const MESSAGE_FOUND_TYPES = "@types/ found, installing...";
 const MESSAGE_NO_TYPES = "@types/ not found, skipping.";
-const MESSAGE_COMMAND_INTERRUPTED = "Command interrupted.";
-const MESSAGE_EXITING = "Exiting...";
 const tokens = {
     npm: "npm",
     install: ["install", "i"],
     saveDev: ["--save-dev", "-D"],
-    exit: ["q", "quit", "exit"],
 };
 const currentProcess = [];
 const installResults = [];
@@ -48,10 +45,6 @@ readlineInterface.on("line", (line) => __awaiter(void 0, void 0, void 0, functio
             else {
                 console.log(ERROR_NO_PACKAGE_NAME);
             }
-        }
-        else if (tokens.exit.includes(commandTokens[1])) {
-            console.log(MESSAGE_EXITING);
-            process.exit(0);
         }
         else {
             yield executeCommand(line);
@@ -143,13 +136,3 @@ function colorizeStatus(status) {
         return RED + status + RESET;
     }
 }
-process.on("SIGINT", () => {
-    currentProcess.forEach((process) => {
-        process.kill();
-    });
-    console.log(MESSAGE_COMMAND_INTERRUPTED);
-    readlineInterface.prompt();
-});
-readlineInterface.on("close", () => {
-    process.exit(0);
-});
